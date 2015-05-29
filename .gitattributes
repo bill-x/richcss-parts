@@ -1,0 +1,37 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom for rails
+*.rb      text
+*.yml     text
+*.erb     text
+*.html    text
+*.coffee  text
+*.js      text
+*.less    text
+*.builder text
+*.xml     text
+Gemfile*  text
+Rakefile  text
+README    text
+*.ru      text
+.rvmrc    text
+*.txt     text
+.rspec    text
+
+# Standard to msysgit
+*.doc	 diff=astextplain
+*.DOC	 diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot  diff=astextplain
+*.DOT  diff=astextplain
+*.pdf  diff=astextplain
+*.PDF	 diff=astextplain
+*.rtf	 diff=astextplain
+*.RTF	 diff=astextplain
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.gif binary
