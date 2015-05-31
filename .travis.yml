@@ -1,0 +1,11 @@
+language: ruby
+
+before_script:
+  - mysql -e 'create database richcssparts_test;'
+
+rvm:
+  - 2.1.2
+
+cache: bundler
+
+bundler_args: --without doc

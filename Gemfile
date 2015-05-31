@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0',           group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',                     group: :development
 
+# Need to add rake for Travis CI to run tests
+gem 'rake',                       group: :test
+
 # Use bower for front-end assets
 gem 'bower-rails'
 # Use angular templates with rails' asset pipeline
