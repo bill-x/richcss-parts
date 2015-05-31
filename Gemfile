@@ -6,7 +6,7 @@ gem 'rails', '4.1.8'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',           group: :doc
 gem 'spring',                     group: :development
 
 # Use bower for front-end assets
-gem 'bower-rails'
+gem 'bower-rails', '~> 0.9.2'
 # Use angular templates with rails' asset pipeline
 gem 'angular-rails-templates'
 

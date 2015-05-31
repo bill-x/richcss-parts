@@ -11,8 +11,6 @@
 // about supported directives.
 //
 //= require angular/angular
-//= require angular-route/angular-route
 //= require angular-rails-templates
-//= require angular-strap/dist/angular-strap.js
-//= require angular-strap/dist/angular-strap.tpl.js
+//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
 //= require_tree .
