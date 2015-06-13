@@ -1,1 +1,37 @@
-test
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RichCSS Parts</title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+    <body>
+        <%= render partial: "partials/header" %>
+
+        <div class="itemlist">
+            <h1> Parts </h1>
+
+            <div class="part">
+            <% @items.each do |item| %>
+            <div class="part-id">
+                <%= item[:id] %>
+            </div>
+
+            <div class="part-version">
+                <%= item[:version] %>
+            </div>
+
+            <div class="part-summary">
+                <%= item[:summary] %>
+            </div>
+
+            <div class="part-download">
+                <%= item[:downloads] %> downloads
+            </div>
+
+            <% end %>
+            </div>
+        </div>
+    </body>
+</html>

@@ -11,6 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150612020141) do
+
+  create_table "parts", force: true do |t|
+    t.string   "name"
+    t.string   "version"
+    t.string   "description"
+    t.integer  "number_of_downloads"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

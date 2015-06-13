@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root to: 'parts#index'
 
+  get '/parts', to: 'parts#list'
+
+  get '/parts/:id', to: 'parts#show'
+
+  get '/parts/:id/versions/:version', to: 'parts#oldversion'
+
   # resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
