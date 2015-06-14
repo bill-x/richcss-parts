@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612020141) do
+ActiveRecord::Schema.define(version: 20150613230506) do
 
   create_table "parts", force: true do |t|
     t.string   "name"
-    t.string   "version"
+    t.string   "current_version"
     t.string   "description"
+    t.integer  "total_downloads"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "versions", force: true do |t|
+    t.string   "part_id"
+    t.string   "version"
     t.integer  "number_of_downloads"
     t.datetime "created_at"
     t.datetime "updated_at"
