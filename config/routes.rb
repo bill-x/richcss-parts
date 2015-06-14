@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   root to: 'parts#index'
 
   get '/parts', to: 'parts#list'
+  
+  get '/parts/search', to: 'parts#search'
+  get '/parts/:id/versions/:version', to: 'parts#oldversion'
 
   get '/parts/:id', to: 'parts#show'
 
-  get '/parts/:id/versions/:version', to: 'parts#oldversion'
+
 
   # resources :users
 
