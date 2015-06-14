@@ -6,32 +6,41 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-    <body>
-        <%= render partial: "partials/header" %>
+<body>
+    <%= render partial: "partials/header" %>
 
-        <div class="itemlist">
-            <h1> Parts </h1>
+    <div class="itemlist">
+        <h1> Parts </h1>
 
-            <div class="part">
-            <% @items.each do |item| %>
-            <div class="part-id">
-                <%= item[:id] %>
+        <% @length = 0 %>
+        <div class="parts">
+
+        <div class="row">
+        <% @items.each do |item| %>
+            <%= link_to "parts/#{item[:id]}" do %>
+            <div class="col-md-4">
+                <div class="part-id">
+                    <%= item[:id] %>
+                </div>
+
+                <div class="part-version">
+                    <%= item[:version] %>
+                </div>
+
+                <div class="part-summary">
+                    <%= item[:summary] %>
+                </div>
+
+                <div class="part-download">
+                    <%= item[:downloads] %> downloads
+                </div>
             </div>
-
-            <div class="part-version">
-                <%= item[:version] %>
-            </div>
-
-            <div class="part-summary">
-                <%= item[:summary] %>
-            </div>
-
-            <div class="part-download">
-                <%= item[:downloads] %> downloads
-            </div>
-
             <% end %>
-            </div>
+        <% end %>
         </div>
-    </body>
+
+
+        </div>
+    </div>
+</body>
 </html>
