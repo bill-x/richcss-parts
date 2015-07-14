@@ -56,6 +56,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
 
-  # Use bootstrap script to provision others
+  # Create directory and use bootstrap script to provision others
+  config.vm.provision :shell,
+    inline: "mkdir -p /home/vagrant/ && sudo chown -R vagrant /home/vagrant/"
   config.vm.provision :shell, :path => "bootstrap.sh"
 end

@@ -1,3 +1,5 @@
+[![Build Status](https://magnum.travis-ci.com/bill-x/richcss-parts.svg?token=Exs34CRBPGqEYcrzxxLp)](https://magnum.travis-ci.com/bill-x/richcss-parts)
+
 # Setting Up Vagrant
 
 1. [Install Vagrant](http://www.vagrantup.com/downloads.html)
