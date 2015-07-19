@@ -1,0 +1,25 @@
+.header-bar {
+        height: 55px; 
+        width: 100%; 
+        background-color: black;
+}
+
+.search-control {
+        width: 100%;
+        padding-left: 5px;
+}
+
+.search-control-div {
+        width: 400px; 
+        float: left;
+        padding-top: 10px;
+}
+
+#search {
+        padding: 8px 15px;
+        border: 0px solid #dbdbdb;
+}
+
+#search.form-control {
+        width: 100%;
+}

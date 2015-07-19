@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613230506) do
+ActiveRecord::Schema.define(version: 20150719210333) do
+
+  create_table "contributors", force: true do |t|
+    t.string   "part_name"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dependencies", force: true do |t|
+    t.string   "part_name"
+    t.string   "part_version"
+    t.string   "dependency_name"
+    t.string   "dependency_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parts", force: true do |t|
     t.string   "name"
@@ -20,14 +36,18 @@ ActiveRecord::Schema.define(version: 20150613230506) do
     t.integer  "total_downloads"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "github_link"
+    t.string   "author_name"
+    t.string   "author_email"
   end
 
   create_table "versions", force: true do |t|
-    t.string   "part_id"
+    t.string   "part_name"
     t.string   "version"
     t.integer  "number_of_downloads"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "release_number"
   end
 
 end
