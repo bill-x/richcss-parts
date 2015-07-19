@@ -13,3 +13,8 @@ bundler_args: --without doc
 notifications:
   email: false
   slack: se2016-fdp-a4:IBtEnlQcbSfkQ43JOgIzbnMP
+
+# whitelist
+branches:
+  only:
+    - master
