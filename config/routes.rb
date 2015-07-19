@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/parts/:id', to: 'parts#show'
 
-
+  get '/upload', to: 'uploads#index'
 
   # resources :users
 
