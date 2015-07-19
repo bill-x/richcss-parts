@@ -1,17 +1,14 @@
-<div style="height: 55px; width: 100%; background-color: black; padding-top: 10px;">
-	<button class="glyphicon glyphicon-home btn btn-default" style="color: yellow; background-color: black; float: left;"></button>
+<div class="header-bar">
+	<button class="glyphicon glyphicon-home btn btn-default home-nav-button"></button>
 
-  <div class="input-group" style="width: 400px; float: left;">
-  <%= form_tag "/parts/search", :method => 'get', :class => 'search-control' do %>
-      <%= text_field_tag :search, params[:search], :class => 'form-control' %>
-      <%= submit_tag "Search", :class => 'search-button', :value=>'⌕' %>
-  <% end %>
+  <div class="input-group search-control-div">
+    <%= form_tag "/parts/search", :method => 'get', :class => 'search-control' do %>
+        <%= text_field_tag :search, params[:search], :class => 'form-control' %>
+        <%= submit_tag "Search", :class => 'search-button', :value=>'⌕' %>
+    <% end %>
   </div>
-
-	<button class="btn btn-default" style="color: yellow; background-color: black; float: right;">Sign Up</button>
-	<button class="btn btn-default" style="color: yellow; background-color: black; float: right;">Sign In</button>
-	<button class="btn btn-default" style="color: yellow; background-color: black; float: right;">CSS</button>
+	<%= link_to "CSS", "/parts/", :class => "btn btn-default css-nav-button" %>
 </div>
 
-
 <div id="wrapper">
+

@@ -9,39 +9,44 @@
 <body>
     <%= render partial: "partials/header" %>
 
-    <div class="itemlist">
-        <h1> Parts </h1>
+    <div class="col-md-2"></div>
 
-        <% @length = 0 %>
-        <div class="parts">
+    <div class="col-md-8">  
+        <div class="itemlist">
+            <h1 class="padding-top-bottom-20"> Parts </h1>
 
-        <div class="row">
-        <% @items.each do |item| %>
-            <%= link_to "parts/#{item[:id]}" do %>
-            <div class="col-md-4">
-                <div class="part-id">
-                    <%= item[:id] %>
+            <% @length = 0 %>
+            <div class="parts">
+
+            <div class="row">
+            <% @items.each do |item| %>
+                <%= link_to "#{item[:id]}" do %>
+                <div class="col-md-4 color-black padding-bottom-40">
+                    <div class="part-id">
+                        <h4><%= item[:id] %></h4>
+                    </div>
+
+                    <div class="part-summary padding-between-text">
+                        <i><%= item[:summary] %></i>
+                    </div>
+
+                    <div class="part-download padding-between-text">
+                        <div class="glyphicon glyphicon-download"></div> <%= item[:downloads] %>
+                    </div>
+
+                    <div class="part-version">
+                        <%= item[:version] %>
+                    </div>
                 </div>
-
-                <div class="part-version">
-                    <%= item[:version] %>
-                </div>
-
-                <div class="part-summary">
-                    <%= item[:summary] %>
-                </div>
-
-                <div class="part-download">
-                    <%= item[:downloads] %> downloads
-                </div>
-            </div>
+                <% end %>
             <% end %>
-        <% end %>
-        </div>
+            </div>
 
 
+            </div>
         </div>
     </div>
+    <div class="col-md-2"></div>
 
     <%= render partial: "partials/footer" %>
 </body>

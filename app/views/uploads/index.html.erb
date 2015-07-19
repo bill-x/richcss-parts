@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RichCSS Parts</title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+    <body>
+
+        <%= render partial: "partials/header" %>
+
+        <%= render partial: "partials/upload" %>
+
+        <%= form_tag("/upload/new", method: "post") do %>
+            <%= label_tag(:github, "Github Repo URL:") %>
+            <%= text_field_tag(:github) %>
+            <br>
+            <%= label_tag(:contributors, "Contributors:") %>
+            <%= text_field_tag(:contributors) %>
+            <br>
+            <%= label_tag(:description, "Description:") %>
+            <%= text_field_tag(:description) %>
+            <br>
+        <% end %>
+
+        <%= render partial: "partials/footer" %>
+
+    </body>
+</html>

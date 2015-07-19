@@ -7,17 +7,21 @@ class PartsController < ActionController::Base
 
         struct = Struct.new(:id, :version, :downloads, :summary)
 
-        a = struct.new("Testing Framework", "0.0.0", 23425, "A testing framework")
-        b = struct.new("Runescape", "3.7.110", 3513546, "A game")
-        c = struct.new("MaQuan", "0.0.0", 1, "a monster")
-        d = struct.new("Testing Framework 2", "0.1.0", 515, "A testing framework 2")
-        e = struct.new("Testing Framework 3", "3.0.0", 456, "A testing framework 3")
-        f = struct.new("Testing Framework 4", "0.0.5", 234534, "A testing framework 4")
+        a = struct.new("Twitter Bootstrap", "4.0.0", 23425, "Twitter Bootstrap")
+        b = struct.new("Custom CSS 1", "1.0.0", 3513546, "Custom CSS")
+        c = struct.new("Custom CSS 2", "2.0.0", 168, "Custom CSS")
+        d = struct.new("Custom CSS 3", "4.1.0", 515, "Custom CSS")
+        e = struct.new("Custom CSS 4", "3.0.0", 456, "Custom CSS")
+        f = struct.new("Custom CSS 5", "0.0.5", 234534, "Custom CSS")
 
         @items = [a,b,c,d,e,f]
 	end
 
     def show
+        struct = Struct.new(:id, :version, :downloads, :summary)
+
+        @item = struct.new("Custom CSS", "1.0.1", 23425, "Custom CSS")
+        @versions = ["1.0.1", "1.0.0", "0.9.9"]
     end
 
     def oldversion
