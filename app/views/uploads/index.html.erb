@@ -12,17 +12,29 @@
 
         <%= render partial: "partials/upload" %>
 
-        <%= form_tag("/upload/new", method: "post") do %>
-            <%= label_tag(:github, "Github Repo URL:") %>
-            <%= text_field_tag(:github) %>
-            <br>
-            <%= label_tag(:contributors, "Contributors:") %>
-            <%= text_field_tag(:contributors) %>
-            <br>
-            <%= label_tag(:description, "Description:") %>
-            <%= text_field_tag(:description) %>
-            <br>
-        <% end %>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">  
+                    <div class="col-lg-12">
+                        <%= form_tag("/upload/new", method: "post") do %>
+                            <%= label_tag(:github, "Github Repo URL:") %>
+                            <%= text_field_tag(:github) %>
+                            <br>
+                            <%= label_tag(:email, "Email Address:") %>
+                            <%= text_field_tag(:email) %>
+                            <br>
+                            <%= label_tag(:contributors, "Contributors:") %>
+                            <%= text_field_tag(:contributors) %>
+                            <br>
+                            <%= label_tag(:description, "Description:") %>
+                            <%= text_field_tag(:description) %>
+                            <br>
+                            <%= submit_tag("Create New CSS Bundle") %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <%= render partial: "partials/footer" %>
 

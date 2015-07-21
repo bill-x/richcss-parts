@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   get '/upload', to: 'uploads#index'
 
+  post '/upload/new', to: 'uploads#new'
+
+  get '/upload/update', to: 'uploads#update'
+
   # resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
