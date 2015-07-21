@@ -23,19 +23,19 @@
                 <%= link_to "#{item[:id]}" do %>
                 <div class="col-md-4 color-black padding-bottom-40">
                     <div class="part-id">
-                        <h4><%= item[:id] %></h4>
+                        <h4><%= item.name %></h4>
                     </div>
 
                     <div class="part-summary padding-between-text">
-                        <i><%= item[:summary] %></i>
+                        <i><%= item.description %></i>
                     </div>
 
                     <div class="part-download padding-between-text">
-                        <div class="glyphicon glyphicon-download"></div> <%= item[:downloads] %>
+                        <div class="glyphicon glyphicon-download"></div> <%= item.total_downloads %>
                     </div>
 
                     <div class="part-version">
-                        <%= item[:version] %>
+                        <%= item.current_version %>
                     </div>
                 </div>
                 <% end %>
