@@ -16,32 +16,17 @@
             <div class="container-fluid">
                 <div class="row">  
                     <div class="col-lg-12">
-                        <%= form_tag("/upload/new", method: "post") do %>
+                        <%= form_tag("/upload/update", method: "post") do %>
                             <%= label_tag(:part_name, "Part Name:") %>
                             <%= text_field_tag(:part_name) %>
                             <br>
                             <%= label_tag(:part_version, "Part Version:") %>
                             <%= text_field_tag(:part_version) %>
                             <br>
-                            <%= label_tag(:part_description, "Part Description:") %>
-                            <%= text_field_tag(:part_description) %>
-                            <br>
-                            <%= label_tag(:github_link, "Github Repo URL:") %>
-                            <%= text_field_tag(:github_link) %>
-                            <br>
                             <%= label_tag(:github_release_number, "Github Release Number:") %>
                             <%= text_field_tag(:github_release_number) %>
                             <br>
-                            <%= label_tag(:author_email, "Email Address:") %>
-                            <%= text_field_tag(:author_email) %>
-                            <br>
-                            <%= label_tag(:author_name, "Author Name:") %>
-                            <%= text_field_tag(:author_name) %>
-                            <br>
-                            <%= label_tag(:contributors, "Contributors:") %>
-                            <%= text_field_tag(:contributors) %>
-                            <br>
-                            <%= submit_tag("Create New CSS Part") %>
+                            <%= submit_tag("Update Existing CSS Part") %>
                         <% end %>
                     </div>
                 </div>

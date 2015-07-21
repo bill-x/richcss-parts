@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RichCSS Parts</title>
-  <%= stylesheet_link_tag 'application' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-    <body>
+	<head>
+	  <title>RichCSS Parts</title>
+	  <%= stylesheet_link_tag 'application' %>
+	  <%= javascript_include_tag 'application' %>
+	  <%= csrf_meta_tags %>
+	</head>
 
-        <%= render partial: "partials/header" %>
-  			<div class="col-md-2"></div>
+  <body>
+    <%= render partial: "partials/header" %>
+		<div class="col-md-2"></div>
 
-       	<div class="col-md-8">
-	        <div style="padding-top: 30px">
-            <h1><%= @item[:id] %></h1>
-	        </div>
+   	<div class="col-md-8">
+      <div class="padding-top-30">
+        <h1><%= @item[:id] %></h1>
+      </div>
 
-        <h4 style="display: inline-block;"><i><%= @item[:summary] %></i></h4>
-        
-        <h4 style="right: 0; position: absolute; display: inline-block;">	
-            <div class="glyphicon glyphicon-download"></div> <%= @item[:downloads] %>
-        	</h4>
+      <h4 class="display-inline-block"><i><%= @item[:summary] %></i></h4>
+      <h4 class="display-inline-block position-absolute-right">	
+      	<div class="glyphicon glyphicon-download"></div> <%= @item[:downloads] %>
+      </h4>
 
-            <div style="padding-top: 5px;">
-            	Version: 
-    	        <select class="form-control" style="width: auto;">
-    	            <% @versions.each do |version| %>
+      <div class="padding-top-5">
+      	Version: 
+        <select class="form-control width-auto">
+            <% @versions.each do |version| %>
 
-    					  <option value="<%= version %>"><%= version %></option>
+				  <option value="<%= version %>"><%= version %></option>
 
-    					  <% end %>
-    					</select>
-    				</div>
+				  <% end %>
+				</select>
+			</div>
 
-            <div style="padding-top: 15px;">
-            	Install via Command Line: <br>
-            	parts install <%= @item[:id] %>
-            </div>
-        </div>
-        <div class="col-md-2"></div>
+      <div class="padding-top-15">
+      	Install via Command Line: <br>
+      	parts install <%= @item[:id] %>
+      </div>
+    </div>
 
+    <div class="col-md-2"></div>
 
-        <%= render partial: "partials/footer" %>
-    </body>
+    <%= render partial: "partials/footer" %>
+  </body>
 </html>

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   post '/upload/new', to: 'uploads#new'
 
-  get '/upload/update', to: 'uploads#update'
+  get '/upload/updatePart', to: 'uploads#updatePart'
+
+  post '/upload/update', to: 'uploads#update'
 
   # resources :users
 
