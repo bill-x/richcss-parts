@@ -13,28 +13,26 @@
 
    	<div class="col-md-8">
       <div class="padding-top-30">
-        <h1><%= @item[:id] %></h1>
+        <h1><%= @part[:name] %></h1>
       </div>
 
-      <h4 class="display-inline-block"><i><%= @item[:summary] %></i></h4>
+      <h4 class="display-inline-block"><i><%= @part[:description] %></i></h4>
       <h4 class="display-inline-block position-absolute-right">	
-      	<div class="glyphicon glyphicon-download"></div> <%= @item[:downloads] %>
+      	<div class="glyphicon glyphicon-download"></div> <%= @part[:total_downloads] %>
       </h4>
 
       <div class="padding-top-5">
       	Version: 
         <select class="form-control width-auto">
-            <% @versions.each do |version| %>
-
-				  <option value="<%= version %>"><%= version %></option>
-
+          <% @versions.each do |version| %>
+				    <option value="<%= version %>"><%= version %></option>
 				  <% end %>
 				</select>
 			</div>
 
       <div class="padding-top-15">
       	Install via Command Line: <br>
-      	parts install <%= @item[:id] %>
+      	parts install <%= @part[:name] %>
       </div>
     </div>
 

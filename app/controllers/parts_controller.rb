@@ -3,14 +3,12 @@ class PartsController < ActionController::Base
 	end
 
 	def list
-        @items = Part.all
+        @parts = Part.all
 	end
 
     def show
-        struct = Struct.new(:id, :version, :downloads, :summary)
-
-        @item = struct.new("Custom CSS", "1.0.1", 23425, "Custom CSS")
-        @versions = ["1.0.1", "1.0.0", "0.9.9"]
+        @part = Part.find(params[:id])
+        @versions = Version.where(:part_name => @part.name).order(version: :desc).pluck(:version)
     end
 
     def oldversion
