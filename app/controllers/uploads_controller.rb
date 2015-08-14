@@ -1,5 +1,4 @@
 require 'net/http'
-require 'pry'
 
 class UploadsController < ActionController::Base
     def index
