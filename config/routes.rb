@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   post '/upload/update', to: 'uploads#update'
 
+  get '/api/getPartUrl/:part_name(/version/:version)', to: 'api#getPartURL'
+
   # resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

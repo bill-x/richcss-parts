@@ -20,26 +20,23 @@
                             <%= label_tag(:part_name, "Part Name:") %>
                             <%= text_field_tag(:part_name) %>
                             <br>
-                            <%= label_tag(:part_version, "Part Version:") %>
-                            <%= text_field_tag(:part_version) %>
-                            <br>
                             <%= label_tag(:part_description, "Part Description:") %>
                             <%= text_field_tag(:part_description) %>
                             <br>
-                            <%= label_tag(:github_link, "Github Repo URL:") %>
-                            <%= text_field_tag(:github_link) %>
+                            <%= label_tag(:repo_name, "Repo Name:") %>
+                            <%= text_field_tag(:repo_name) %>
                             <br>
-                            <%= label_tag(:github_release_number, "Github Release Number:") %>
-                            <%= text_field_tag(:github_release_number) %>
+                            <%= label_tag(:repo_owner, "Repo Owner:") %>
+                            <%= text_field_tag(:repo_owner) %>
+                            <br>
+                            <%= label_tag(:release_version, "Release Version:") %>
+                            <%= text_field_tag(:release_version) %>
                             <br>
                             <%= label_tag(:author_email, "Email Address:") %>
                             <%= text_field_tag(:author_email) %>
                             <br>
                             <%= label_tag(:author_name, "Author Name:") %>
                             <%= text_field_tag(:author_name) %>
-                            <br>
-                            <%= label_tag(:contributors, "Contributors:") %>
-                            <%= text_field_tag(:contributors) %>
                             <br>
                             <%= submit_tag("Create New CSS Part") %>
                         <% end %>

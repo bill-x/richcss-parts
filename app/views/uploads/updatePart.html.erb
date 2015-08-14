@@ -20,11 +20,8 @@
                             <%= label_tag(:part_name, "Part Name:") %>
                             <%= text_field_tag(:part_name) %>
                             <br>
-                            <%= label_tag(:part_version, "Part Version:") %>
-                            <%= text_field_tag(:part_version) %>
-                            <br>
-                            <%= label_tag(:github_release_number, "Github Release Number:") %>
-                            <%= text_field_tag(:github_release_number) %>
+                            <%= label_tag(:release_version, "Github Release Version:") %>
+                            <%= text_field_tag(:release_version) %>
                             <br>
                             <%= submit_tag("Update Existing CSS Part") %>
                         <% end %>
