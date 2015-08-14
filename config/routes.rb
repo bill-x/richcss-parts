@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   post '/upload/update', to: 'uploads#update'
 
-  get '/api/getPartUrl/:part_name(/version/:version)', to: 'api#getPartURL'
+  get '/api/part/:part_name(/version/:version)', to: 'api#getPart'
 
   # resources :users
 

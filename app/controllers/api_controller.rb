@@ -1,5 +1,5 @@
 class ApiController < ActionController::Base
-	def getPartURL
+	def getPart
         part = Part.where(:name => params[:part_name]).first
         latestVersion = Version.where(:part_name => params[:part_name]).order(release_version: :desc).first
 
