@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RichCSS Parts</title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <%= render partial: "partials/header" %>
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">  
+        <div class="itemlist">
+            <h1 class="padding-top-bottom-20"> Parts </h1>
+
+            <% @length = 0 %>
+            <div class="parts">
+
+            <div class="row">
+            <% @parts.each do |part| %>
+                <%= link_to "#{part[:id]}" do %>
+                <div class="col-md-4 color-black padding-bottom-40">
+                    <div class="part-id">
+                        <h4><%= part.name %></h4>
+                    </div>
+
+                    <div class="part-summary padding-between-text">
+                        <i><%= part.description %></i>
+                    </div>
+
+                    <div class="part-download padding-between-text">
+                        <div class="glyphicon glyphicon-download"></div> <%= part.total_downloads %>
+                    </div>
+
+                    <div class="part-version">
+                        <%= part.current_version %>
+                    </div>
+                </div>
+                <% end %>
+            <% end %>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+    <%= render partial: "partials/footer" %>
+</body>
+</html>

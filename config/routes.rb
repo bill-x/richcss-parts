@@ -1,7 +1,24 @@
 Rails.application.routes.draw do
-  root to: 'welcome#index'
+  root to: 'parts#index'
 
-  resources :users
+  get '/parts', to: 'parts#list'
+  
+  get '/parts/search', to: 'parts#search'
+  get '/parts/:id/versions/:version', to: 'parts#oldversion'
+
+  get '/parts/:id', to: 'parts#show'
+
+  get '/upload', to: 'uploads#index'
+
+  post '/upload/new', to: 'uploads#new'
+
+  get '/upload/updatePart', to: 'uploads#updatePart'
+
+  post '/upload/update', to: 'uploads#update'
+
+  get '/api/part/:part_name(/version/:version)', to: 'api#getPart'
+
+  # resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
