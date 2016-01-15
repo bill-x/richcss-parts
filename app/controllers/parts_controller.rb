@@ -23,9 +23,6 @@ class PartsController < ActionController::Base
         end
     end
 
-    def oldversion
-    end
-
     def search
     end
 end

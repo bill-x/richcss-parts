@@ -9,11 +9,9 @@ Rails.application.routes.draw do
 
   get '/upload', to: 'uploads#index'
 
-  post '/upload/new', to: 'uploads#new'
-
   get '/upload/updatePart', to: 'uploads#updatePart'
 
-  post '/upload/update', to: 'uploads#update'
+  post '/upload', to: 'uploads#upload'
 
   get '/api/part/:part_name(/version/:version)', to: 'api#getPart'
 

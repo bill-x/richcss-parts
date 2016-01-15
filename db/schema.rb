@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814021538) do
+ActiveRecord::Schema.define(version: 20160115005022) do
 
   create_table "contributors", force: true do |t|
     t.string   "part_name"
@@ -31,15 +31,14 @@ ActiveRecord::Schema.define(version: 20150814021538) do
 
   create_table "parts", force: true do |t|
     t.string   "name"
-    t.string   "current_version"
+    t.string   "version"
     t.string   "description"
     t.integer  "total_downloads", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "author_name"
-    t.string   "author_email"
-    t.string   "repo_name"
-    t.string   "repo_owner"
+    t.string   "authors"
+    t.string   "email"
+    t.string   "homepage"
   end
 
   create_table "versions", force: true do |t|
@@ -47,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150814021538) do
     t.integer  "number_of_downloads", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "release_version"
+    t.string   "version"
   end
 
 end

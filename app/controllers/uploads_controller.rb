@@ -1,24 +1,38 @@
 require 'net/http'
 
 class UploadsController < ActionController::Base
-    def index
-    end
+    def upload
+        part = Part.where(:name => params[:name]).first
+        if part.nil?
+            Part.create(:name => params[:name], :description => params[:description], :version => params[:version],
+                :authors => params[:authors], :email => params[:email], :homepage => params[:homepage])
+            Version.create(:part_name => params[:name], :version => params[:version])
 
-    def update
-        part = Part.where(:name => params[:part_name]).first
+            if !params[:dependencies].empty?
+                params[:dependencies].each do |dependency_name, dependency_version|
+                    Dependency.create(:part_name => params[:name], :part_version => params[:version],
+                        :dependency_name => dependency_name, :dependency_version => dependency_version)
+                end
+            end
 
-        if (!part.nil? && params[:release_version] > part.current_version)
-            Version.create(:part_name => params[:part_name], :release_version => params[:release_version])
-            part.update_attributes(:current_version => params[:release_version])
-        end
-    end
+            render :json => { :success => "Successfully created css part: #{params[:name]}" }, status: 200
+        else
+            if Gem::Version.new(params[:version]) > Gem::Version.new(part.version)
+                Version.create(:part_name => params[:name], :version => params[:version])
+                part.update_attributes(:version => params[:version])
 
-    def new
-        if (Part.where(:name => params[:part_name]).empty?)
-            Part.create(:name => params[:part_name], :description => params[:part_description], :repo_name => params[:repo_name],
-                :repo_owner => params[:repo_owner], :current_version => params[:release_version], :author_name => params[:author_name], 
-                :author_email => params[:author_email])
-            Version.create(:part_name => params[:part_name], :release_version => params[:release_version])
+                if !params[:dependencies].empty?
+                    params[:dependencies].each do |dependency_name, dependency_version|
+                        Dependency.create(:part_name => params[:name], :part_version => params[:version],
+                            :dependency_name => dependency_name, :dependency_version => dependency_version)
+                    end
+                end
+
+                render :json => { :success => "Successfully updated css part: #{part.name} to version: #{params[:version]}" }, status: 200
+            else
+                render :json => { :error => "Specified version #{params[:version]} not greater than latest version: #{part.version}"},
+                       status: 400
+            end
         end
     end
 end
