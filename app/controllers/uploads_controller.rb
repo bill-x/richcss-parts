@@ -15,7 +15,7 @@ class UploadsController < ActionController::Base
                 end
             end
 
-            render :json => { :success => "Successfully created css part: #{params[:name]}" }, status: 200
+            render :text => "Successfully created css part: #{params[:name]}", status: 200
         else
             if Gem::Version.new(params[:version]) > Gem::Version.new(part.version)
                 Version.create(:part_name => params[:name], :version => params[:version])
@@ -28,10 +28,9 @@ class UploadsController < ActionController::Base
                     end
                 end
 
-                render :json => { :success => "Successfully updated css part: #{part.name} to version: #{params[:version]}" }, status: 200
+                render :text => "Successfully updated css part: #{part.name} to version: #{params[:version]}", status: 200
             else
-                render :json => { :error => "Specified version #{params[:version]} not greater than latest version: #{part.version}"},
-                       status: 400
+                render :text => "Specified version #{params[:version]} not greater than latest version: #{part.version}", status: 400
             end
         end
     end
