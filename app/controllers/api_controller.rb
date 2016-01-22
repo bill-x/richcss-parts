@@ -11,6 +11,39 @@ class ApiController < ActionController::Base
         render :json => part, status: 200
 	end
 
+    def getPartDependencies
+        queue = [[params[:name], params[:version]]]
+        visited = queue
+        allDep = Hash.new
+
+        loop do
+            curDep = queue.pop
+            break if curDep == nil
+
+            partObj = Hash.new
+            partObj['name'] = curDep[0]
+            partObj['version'] = curDep[1]
+
+            dependencies = Dependency.where(:part_name => curDep[0], :part_version => curDep[1])
+            depList = Hash.new
+            dependencies.each do |addDep|
+                depName, depVersion = addDep.part_name, addDep.part_version
+                if !visited.include?([depName, depVersion])
+                    queue.push([depName, depVersion])
+                    visited.push([depName, depVersion])
+
+                    depList[depName] = depVersion
+                end
+            end
+            partObj['dependencies'] = depList
+
+            allDep[curDep[0]] = [] if !allDep.has_key?(curDep[0])
+            allDep[curDep[0]].push(partObj)
+        end
+ 
+        render :json => allDep, status: 200
+    end
+
     def upload
         part = Part.where(:name => params[:name]).first
         if part.nil?
