@@ -19,7 +19,11 @@ module Richcss
 
     desc "install <PART>", "Install the Parts requested into the Parts directory of Rich CSS framework"
     def install(part_name)
-    	Richcss::Part.fetch(part_name)
+        dep_list = Richcss::Part.resolve_dependencies(part_name)
+        dep_list.each do |dep|
+          Richcss::Part.fetch(dep.name, dep.version)
+        end
+        Richcss::Part.fetch(part_name)
     end
 
     desc "check <PART_NAME>", "Check to make sure that the CSS Part is following the folder/file structure and validating the spec file values"

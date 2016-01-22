@@ -4,13 +4,19 @@ require 'molinillo'
 module Richcss
   class RichSpecificationProvider
     attr_accessor :specs
+    attr_accessor :part_name
+    attr_accessor :version
+
     include Molinillo::SpecificationProvider
 
-    def initialize(fixture_file)
-      File.open(fixture_file, 'r') do |fixture|
-        self.specs = JSON.load(fixture).reduce(Hash.new([])) do |specs_by_name, (name, versions)|
+    def initialize(name, version)
+      self.part_name = name
+      self.version = version
+      response = RestClient.get "http://localhost:3000/api/part/#{name}/dependency", {:params => {'version' => version}}
+      if response.code == 200
+        self.specs = JSON.load(response.body).reduce(Hash.new([])) do |specs_by_name, (dep_name, dep_versions)|
           specs_by_name.tap do |specs|
-            specs[name] = versions.map { |s| Richcss::TestSpecification.new s }.sort_by(&:version)
+            specs[dep_name] = dep_versions.map { |s| Richcss::TestSpecification.new s }.sort_by(&:version)
           end
         end
       end

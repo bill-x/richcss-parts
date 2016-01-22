@@ -7,9 +7,14 @@ module Richcss
   class Part
     attr_accessor :name
 
+    # placeholder for latest version is blank
+    def self.resolve_dependencies(part_name, version='')
+      dep_list = Richcss::Resolver.start(part_name, version)
+    end
+
     # Fetch url and download the part
-    def self.fetch(part_name)
-       puts "Fetching part #{part_name}"
+    def self.fetch(part_name, version='')
+      puts "Fetching part #{part_name}"
 
       begin
         resp = RestClient.get "http://localhost:3000/api/part/#{part_name}"
