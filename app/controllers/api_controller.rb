@@ -1,23 +1,15 @@
+require 'pry'
 class ApiController < ActionController::Base
 	def getPart
         part = Part.where(:name => params[:part_name]).first
 
         if part.nil?
             render :text => "Part: #{params[:part_name]} does not exist.", status: 400
-        else
-            render :json => part, status: 200
+            return
         end
+        
+        render :json => part, status: 200
 	end
-
-    def getPartWithVersion
-        part = Version.where(:name => params[:part_name], :version => params[:version]).first
-
-        if part.nil?
-            render :text => "Part: #{params[:part_name]} with version #{params[:version]} does not exist.", status: 400
-        else
-            render :json => part, status: 200
-        end
-    end
 
     def upload
         part = Part.where(:name => params[:name]).first
@@ -51,5 +43,25 @@ class ApiController < ActionController::Base
                 render :text => "Specified version #{params[:version]} not greater than latest version: #{part.version}", status: 400
             end
         end
+    end
+
+    def validateDependencies
+        params[:dependencies].split("&").each do |dependency|
+            dependency_values = dependency.split("=")
+            versions = Version.where(:part_name => dependency_values[0])
+
+            if versions.empty?
+                render :text => "Part: #{dependency_values[0]} does not exist.", status: 400
+                return
+            else
+                part = versions.where(:version => dependency_values[1]).first
+                if part.nil?
+                    render :text => "Part: #{dependency_values[0]} with version: #{dependency_values[1]} does not exist", status: 400
+                    return
+                end
+            end
+        end
+
+        render :nothing => true, status: 200
     end
 end

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   get '/api/part/:part_name', to: 'api#getPart'
 
-  get '/api/part/:part_name/version/:version', to: 'api#getPartWithVersion'
-
   post '/api/upload', to: 'api#upload'
+
+  get '/api/validateDependencies/:dependencies', :dependencies => /.*/, to: 'api#validateDependencies'
 
   # resources :users
 
