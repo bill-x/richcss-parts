@@ -7,13 +7,11 @@ Rails.application.routes.draw do
 
   get '/parts/:id(/version/:version)', to: 'parts#show'
 
-  get '/upload', to: 'uploads#index'
+  get '/api/part/:part_name', to: 'api#getPart'
 
-  get '/upload/updatePart', to: 'uploads#updatePart'
+  get '/api/part/:part_name/version/:version', to: 'api#getPartWithVersion'
 
-  post '/upload', to: 'uploads#upload'
-
-  get '/api/part/:part_name(/version/:version)', to: 'api#getPart'
+  post '/api/upload', to: 'api#upload'
 
   # resources :users
 
