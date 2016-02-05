@@ -12,10 +12,12 @@ class ApiController < ActionController::Base
 	end
 
     def getPartDependencies
-        queue = [[params[:name], params[:version]]]
-        visited = queue
+        queue = [[params[:part_name], params[:version]]]
+        visited = Hash.new
         allDep = Hash.new
 
+        visited[params[:part_name]] = Array.new
+        visited[params[:part_name]].push(params[:version])
         loop do
             curDep = queue.pop
             break if curDep == nil
@@ -27,20 +29,20 @@ class ApiController < ActionController::Base
             dependencies = Dependency.where(:part_name => curDep[0], :part_version => curDep[1])
             depList = Hash.new
             dependencies.each do |addDep|
-                depName, depVersion = addDep.part_name, addDep.part_version
-                if !visited.include?([depName, depVersion])
+                depName, depVersion = addDep.dependency_name, addDep.dependency_version
+                if !visited.has_key?(depName) || !visited[depName].include?(depVersion)
                     queue.push([depName, depVersion])
-                    visited.push([depName, depVersion])
-
-                    depList[depName] = depVersion
+                    visited[depName] = Array.new if !visited.has_key?(depName)
+                    visited[depName].push(depVersion)
                 end
+                depList[depName] = depVersion
             end
             partObj['dependencies'] = depList
 
             allDep[curDep[0]] = [] if !allDep.has_key?(curDep[0])
             allDep[curDep[0]].push(partObj)
         end
- 
+        
         render :json => allDep, status: 200
     end
 
