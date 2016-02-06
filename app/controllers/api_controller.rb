@@ -12,12 +12,20 @@ class ApiController < ActionController::Base
 	end
 
     def getPartDependencies
-        queue = [[params[:part_name], params[:version]]]
+        #part = Part.where(:name => params[:part_name]).first
+        #if part.nil?
+        #    render :text => "Part: #{params[:part_name]} does not exist.", status: 400
+        #    return
+        #end
+
+        version = params[:version] || part.version
+
+        queue = [[params[:part_name], version]]
         visited = Hash.new
         allDep = Hash.new
 
         visited[params[:part_name]] = Array.new
-        visited[params[:part_name]].push(params[:version])
+        visited[params[:part_name]].push(version)
         loop do
             curDep = queue.pop
             break if curDep == nil
@@ -29,13 +37,13 @@ class ApiController < ActionController::Base
             dependencies = Dependency.where(:part_name => curDep[0], :part_version => curDep[1])
             depList = Hash.new
             dependencies.each do |addDep|
-                depName, depVersion = addDep.dependency_name, addDep.dependency_version
+                depName, depVersion = addDep.dependency_name, addDep.dependency_version.split[1]
                 if !visited.has_key?(depName) || !visited[depName].include?(depVersion)
                     queue.push([depName, depVersion])
                     visited[depName] = Array.new if !visited.has_key?(depName)
                     visited[depName].push(depVersion)
                 end
-                depList[depName] = depVersion
+                depList[depName] = addDep.dependency_version
             end
             partObj['dependencies'] = depList
 
