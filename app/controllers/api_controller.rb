@@ -45,6 +45,7 @@ class ApiController < ActionController::Base
         end
     end
 
+    # TODO: check that dependency follows format (i.e. >= 1.0.0)
     def validateDependencies
         params[:dependencies].split("&").each do |dependency|
             dependency_values = dependency.split("=")

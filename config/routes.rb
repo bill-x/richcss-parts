@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   get '/parts/search', to: 'parts#search'
 
-  get '/parts/:id(/version/:version)', to: 'parts#show'
+  get '/parts/:name(/version/:version)', to: 'parts#show', :version => /.*/
 
   get '/api/part/:part_name', to: 'api#getPart'
 

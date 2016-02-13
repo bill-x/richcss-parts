@@ -1,5 +1,5 @@
 <div class="header-bar">
-	<button class="glyphicon glyphicon-home btn btn-default home-nav-button"></button>
+	<%= link_to "", "/", :class => "glyphicon glyphicon-home btn btn-default home-nav-button" %>
 
   <div class="input-group search-control-div">
     <%= form_tag "/parts/search", :method => 'get', :class => 'search-control' do %>

@@ -1,25 +1,31 @@
 class PartsController < ActionController::Base
 	def index
+    end
+
+    def list
+        @parts = Part.paginate(page: params[:page], per_page: 9).order(name: :asc)
 	end
 
-	def list
-        @parts = Part.all.order(name: :asc)
-	end
+    def getDownloadLink(part, version)
+        homepage = part.homepage
+        homepage.slice! "https:\/\/github.com\/"
+        homepage = homepage.split("\/")
+        repo_owner = homepage[0]
+        repo_name = homepage[1]
+        return "https://api.github.com/repos/#{repo_owner}/#{repo_name}/releases/tags/v#{version}"
+    end
 
     def show
-        @part = Part.find(params[:id])
-        versions = Version.where(:part_name => @part.name).order(release_version: :desc)
-        @versions = versions.pluck(:release_version)
-        @selectedVersion = @part.current_version
+        @part = Part.where(:name => params[:name]).first
+        @versions = Version.where(:part_name => @part.name).order(version: :desc)
+        @homepage = @part.homepage.clone
         @downloads = @part.total_downloads
-        @repoLink = "https://github.com/#{@part[:repo_owner]}/#{@part[:repo_name]}/releases/tag/v#{@selectedVersion}"
-        @installationCommand = "parts install #{@part[:name]}"
+        @downloadLink = getDownloadLink(@part, @part.version)
+        @gemfileEntry = "part '#{@part[:name]}', '~> #{params[:version] ? params[:version] : @part.version}'"
 
-        if !params[:version].nil? && params[:version] != @part.current_version
-            @selectedVersion = params[:version]
-            @downloads = versions.where(:release_version => @selectedVersion).first.number_of_downloads
-            @repoLink = "https://github.com/#{@part[:repo_owner]}/#{@part[:repo_name]}/releases/tag/v#{@selectedVersion}"
-            @installationCommand = "parts install #{@part[:name]} -v #{@selectedVersion}" 
+        if !params[:version].nil? && params[:version] != @part.version
+            @downloads = @versions.where(:version => params[:version]).first.number_of_downloads
+            @downloadLink = getDownloadLink(@part, params[:version])
         end
     end
 
