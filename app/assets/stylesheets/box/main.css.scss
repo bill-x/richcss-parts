@@ -1,7 +1,7 @@
 .header-bar {
-    height: 55px; 
+    height: 75px; 
     width: 100%; 
-    background-color: black;
+    background-color: #e9573f;
 }
 
 .search-control {
@@ -9,10 +9,13 @@
     padding-left: 5px;
 }
 
-.search-control-div {
+.search-control-container {
     width: 400px; 
     float: left;
     padding-top: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    float: none;
 }
 
 #search {
