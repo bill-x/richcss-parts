@@ -1,18 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html class="fill">
 <head>
   <title>RichCSS Parts</title>
   <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-	<body>
+<body class="fill homepage">
 
-		<%= render partial: "partials/header" %>
+  <div class="container fill">
+    <div class="row">
+      <div class="search">
+        <h3> RichCSS </h3>
 
-		Home page
-        
-        <%= render partial: "partials/footer" %>
+        <div class="input-group search-control-container">
+          <%= form_tag "/parts/search", :method => 'get', :class => 'search-control' do %>
+              <%= text_field_tag :search, params[:search], :class => 'form-control', :placeholder => "Search RichCSS..." %>
+              <%= submit_tag "Search", :class => 'search-button', :value=>'⌕' %>
+          <% end %>
+        </div>   
+      </div>
+    </div>
 
-	</body>
+    <div class="row">
+      <div class="footer">
+        <%= link_to "Browse All CSS", parts_path %>
+        |
+        <%= link_to "RichCSS Documentation", "https://docs.google.com/document/d/1vT3Zpnll7OJV-TLhKijk5KVQdVTiFnUAiuAgoFPVHCM" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="description">
+        "RichCSS is a CSS framework providing default structures for reusable css elements. It’s built around an Architectural Style that organizes your code in a way that allows: reusability of your css, versioning, the use of css plugins and the ease of using it. RichCSS is bringing convention and organization to CSS that anyone can understand and use. 
+
+        RichCSS is the V2 of ROOCSS. It’s a CSS Framework that makes it easy to organize and use CSS in teams." - Richardson Dackam
+      </div>
+    </div>
+
+    <div class="row devs">
+      Developers
+    </div>
+    <div class="row devslist">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-2">
+        <%= image_tag("default.png") %>
+        <br>
+        Gabriel Cheng
+      </div>
+      <div class="col-md-2">
+        <%= image_tag("default.png") %>
+        <br>
+        Jonathan Lai
+      </div>
+      <div class="col-md-2">
+        <%= image_tag("default.png") %>
+        <br>
+        Nicholas Lo
+      </div>
+      <div class="col-md-2">
+        <%= image_tag("default.png") %>
+        <br>
+        Bill Xu
+      </div>
+      <div class="col-md-2">
+        <%= image_tag("default.png") %>
+        <br>
+        David Zhu
+      </div>
+      <div class="col-md-1">
+      </div>
+    </div>
+  </div>
+   
+
+</body>
 </html>

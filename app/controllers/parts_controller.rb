@@ -30,5 +30,7 @@ class PartsController < ActionController::Base
     end
 
     def search
+        @title = 'Search Results'
+        @parts = Part.where("name LIKE \"%#{params[:search]}%\" or description LIKE \"%#{params[:search]}%\"")
     end
 end
