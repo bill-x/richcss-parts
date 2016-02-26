@@ -11,6 +11,49 @@ class ApiController < ActionController::Base
         render :json => part, status: 200
 	end
 
+    def getPartDependencies
+        #part = Part.where(:name => params[:part_name]).first
+        #if part.nil?
+        #    render :text => "Part: #{params[:part_name]} does not exist.", status: 400
+        #    return
+        #end
+
+        version = params[:version] || part.version
+
+        queue = [[params[:part_name], version]]
+        visited = Hash.new
+        allDep = Hash.new
+
+        visited[params[:part_name]] = Array.new
+        visited[params[:part_name]].push(version)
+        loop do
+            curDep = queue.pop
+            break if curDep == nil
+
+            partObj = Hash.new
+            partObj['name'] = curDep[0]
+            partObj['version'] = curDep[1]
+
+            dependencies = Dependency.where(:part_name => curDep[0], :part_version => curDep[1])
+            depList = Hash.new
+            dependencies.each do |addDep|
+                depName, depVersion = addDep.dependency_name, addDep.dependency_version.split[1]
+                if !visited.has_key?(depName) || !visited[depName].include?(depVersion)
+                    queue.push([depName, depVersion])
+                    visited[depName] = Array.new if !visited.has_key?(depName)
+                    visited[depName].push(depVersion)
+                end
+                depList[depName] = addDep.dependency_version
+            end
+            partObj['dependencies'] = depList
+
+            allDep[curDep[0]] = [] if !allDep.has_key?(curDep[0])
+            allDep[curDep[0]].push(partObj)
+        end
+        
+        render :json => allDep, status: 200
+    end
+
     def upload
         part = Part.where(:name => params[:name]).first
         if part.nil?
