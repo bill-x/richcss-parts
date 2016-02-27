@@ -1,30 +1,31 @@
 <div class="col-md-2"></div>
 
-    <div class="col-md-8">  
-      <div class="itemlist">
-          <div class="parts-header-label"> Parts </div>
-          <div class="parts-container-block">
-            <div class="row">
-            <% @parts.each do |part| %>
-              <%= link_to "/parts/#{part.name}" do %>
-                <div class="col-md-4 parts-block">
-                  <div class="part-id">
-                    <h4 class="display-inline-block"><%= part.name %></h4>
-                    <div class="part-version-label"><%= part.version %></div>
-                  </div>
-
-                  <div class="padding-bottom-5">
-                    <i><%= part.description %></i>
-                  </div>
-
-                  <div class="padding-bottom-5">
-                    <div class="glyphicon glyphicon-download"></div> <%= part.total_downloads %>
-                  </div>
+  <div class="col-md-8">  
+    <div class="itemlist">
+        <div class="parts-header-label"> Parts </div>
+        <div class="parts-container-block">
+          <div class="row">
+          <% @parts.each do |part| %>
+            <%= link_to "/parts/#{part.name}" do %>
+              <div class="col-md-4 parts-block">
+                <div class="part-id">
+                  <h4 class="display-inline-block"><%= part.name %></h4>
+                  <div class="part-version-label"><%= part.version %></div>
                 </div>
-              <% end %>
+
+                <div class="padding-bottom-5">
+                  <i><%= part.description %></i>
+                </div>
+
+                <div class="padding-bottom-5">
+                  <div class="glyphicon glyphicon-download"></div> <%= part.total_downloads %>
+                </div>
+              </div>
             <% end %>
-            </div>
+          <% end %>
           </div>
-      </div>
+          <div class="pagination"><%= will_paginate @parts %></div>
+        </div>
     </div>
-    <div class="col-md-2"></div>
+  </div>
+  <div class="col-md-2"></div>
