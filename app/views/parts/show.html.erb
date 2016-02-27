@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>RichCSS Parts</title>
+	  <%= stylesheet_link_tag 'application' %>
+	  <%= javascript_include_tag 'application' %>
+	  <%= csrf_meta_tags %>
+	</head>
+
+  <body>
+    <%= render partial: "partials/header" %>
+		<div class="col-md-2"></div>
+
+   	<div class="col-md-8">
+      <div class="part-block">
+        <h1 class="part-name-label"><%= @part[:name] %></h1> 
+        <h3 class="version-label"><%= params[:version] ? params[:version] : @part[:version] %></h3>
+      </div>
+
+      <div class="part-desciption-block">
+        <h4><i><%= @part[:description] %></i></h4>
+      </div>
+
+      <div class="sidebar">	
+        <div class="sidebar-border"> 
+          <div class="padding-bottom-15">
+            <div class="total-downloads-header">TOTAL DOWNLOADS:</div> 
+            <div class="total-downloads-label"><%= @part[:total_downloads] %></div>
+          </div>
+
+          <div class="padding-bottom-15">
+            <div class="downloads-for-this-version-header">FOR THIS VERSION:</div> 
+            <div class="downloads-for-this-version-label"><%= @downloads %></div>
+          </div>
+
+          <div class="padding-bottom-15">
+            <div class="partfile-header">PART FILE:</div> 
+            <%= @gemfileEntry %>
+          </div>
+
+          <div class="links-header">LINKS:</div> 
+
+          <div class="padding-bottom-5">
+            <a class="links" href="<%= @downloadLink %>">
+              Download
+            </a>
+          </div>
+          <div>
+            <a class="links" href="<%= @homepage %>">
+              Homepage
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="versions-block">
+      	<div class="versions-label">VERSIONS:</div> 
+
+        <% @versions.each do |version| %>
+          <li class="bulletless-list"><a class="links" href="/parts/<%= @part[:name] %>/version/<%= version.version %>"><%= version.version %></a> <span class="color-C8C8C8">- <%= version.created_at.strftime("%b %d, %Y") %></span></li>
+			  <% end %>
+			</div>
+
+      <div class="padding-top-bottom-30">
+        <div class="authors-label">AUTHORS:</div> 
+        <div><%= @part[:authors] %></div>
+      </div>
+    </div>
+
+    <div class="col-md-2"></div>
+
+    <%= render partial: "partials/footer" %>
+  </body>
+</html>

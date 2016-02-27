@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RichCSS Parts</title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+    <body>
+
+    <%= render partial: "partials/header" %>
+
+    <%= render partial: "partials/list" %>
+
+    <%= render partial: "partials/footer" %>
+
+    </body>
+</html>

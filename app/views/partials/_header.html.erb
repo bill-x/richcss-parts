@@ -1,0 +1,14 @@
+<div class="header-bar">
+	<%= link_to "", "/", :class => "glyphicon glyphicon-home btn btn-default home-nav-button" %>
+
+  <div class="input-group search-control-container">
+    <%= form_tag "/parts/search", :method => 'get', :class => 'search-control' do %>
+        <%= text_field_tag :search, params[:search], :class => 'form-control' %>
+        <%= submit_tag "Search", :class => 'search-button', :value=>'⌕' %>
+    <% end %>
+  </div>
+	<%= link_to "CSS", "/parts/", :class => "btn btn-default css-nav-button" %>
+</div>
+
+<div id="wrapper">
+
