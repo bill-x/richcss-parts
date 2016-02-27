@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html class="fill">
+<html>
 <head>
   <title>RichCSS Parts</title>
   <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body class="fill homepage">
-
-  <div class="container fill">
+<body class="homepage">
+  <div class="container">
     <div class="row">
       <div class="search">
-        <h3> RichCSS </h3>
+        <h1 class="homepage-title"> Browse and Download <br> RichCSS. </h1>
 
         <div class="input-group search-control-container">
           <%= form_tag "/parts/search", :method => 'get', :class => 'search-control' do %>
@@ -24,9 +23,9 @@
 
     <div class="row">
       <div class="footer">
-        <%= link_to "Browse All CSS", parts_path %>
+        <%= link_to "Browse All CSS", parts_path, :class => "color-white" %>
         |
-        <%= link_to "RichCSS Documentation", "https://docs.google.com/document/d/1vT3Zpnll7OJV-TLhKijk5KVQdVTiFnUAiuAgoFPVHCM" %>
+        <%= link_to "RichCSS Documentation", "https://docs.google.com/document/d/1vT3Zpnll7OJV-TLhKijk5KVQdVTiFnUAiuAgoFPVHCM", :class => "color-white" %>
       </div>
     </div>
 
@@ -37,43 +36,38 @@
         RichCSS is the V2 of ROOCSS. It’s a CSS Framework that makes it easy to organize and use CSS in teams." - Richardson Dackam
       </div>
     </div>
-
+  </div>
+  
+  <div class="dev-container">
     <div class="row devs">
-      Developers
+      Team
     </div>
     <div class="row devslist">
       <div class="col-md-1">
       </div>
       <div class="col-md-2">
         <%= image_tag("default.png") %>
-        <br>
-        Gabriel Cheng
+        <div class="dev-name">Gabriel Cheng</div>
       </div>
       <div class="col-md-2">
         <%= image_tag("default.png") %>
-        <br>
-        Jonathan Lai
+        <div class="dev-name">Jonathan Lai</div>
       </div>
       <div class="col-md-2">
         <%= image_tag("default.png") %>
-        <br>
-        Nicholas Lo
+        <div class="dev-name">Nicholas Lo</div>
       </div>
       <div class="col-md-2">
         <%= image_tag("default.png") %>
-        <br>
-        Bill Xu
+        <div class="dev-name">Bill Xu</div>
       </div>
       <div class="col-md-2">
         <%= image_tag("default.png") %>
-        <br>
-        David Zhu
+        <div class="dev-name">David Zhu</div>
       </div>
       <div class="col-md-1">
       </div>
     </div>
   </div>
-   
-
 </body>
 </html>

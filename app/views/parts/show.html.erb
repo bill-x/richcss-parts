@@ -53,13 +53,25 @@
         </div>
       </div>
 
-      <div class="versions-block">
-      	<div class="versions-label">VERSIONS:</div> 
+      <div class="version-dependency-container">
+        <div class="versions-block">
+        	<div class="versions-label">VERSIONS:</div> 
 
-        <% @versions.each do |version| %>
-          <li class="bulletless-list"><a class="links" href="/parts/<%= @part[:name] %>/version/<%= version.version %>"><%= version.version %></a> <span class="color-C8C8C8">- <%= version.created_at.strftime("%b %d, %Y") %></span></li>
-			  <% end %>
-			</div>
+          <% @versions.each do |version| %>
+            <li class="bulletless-list"><a class="links" href="/parts/<%= @part[:name] %>/version/<%= version.version %>"><%= version.version %></a> <span class="color-C8C8C8">- <%= version.created_at.strftime("%b %d, %Y") %></span></li>
+  			  <% end %>
+  			</div>
+
+        <% if !@dependencies.empty? %>
+        <div class="dependencies-block">
+          <div class="versions-label">DEPENDENCIES:</div> 
+
+          <% @dependencies.each do |dependency| %>
+            <li class="bulletless-list"><a class="links" href="/parts/<%= dependency.dependency_name %>"><%= dependency.dependency_name %></a> <span class="color-C8C8C8">- <%= dependency.dependency_version %></span></li>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
 
       <div class="padding-top-bottom-30">
         <div class="authors-label">AUTHORS:</div> 

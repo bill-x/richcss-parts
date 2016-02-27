@@ -6,25 +6,35 @@
         height: 77%;
 }
 
+.search-button {
+        border: none;
+        background-color: white;
+        color: #e5b062;
+        margin-left: -30px;
+        z-index: 100;
+        height: 34px;
+        width: 25px;
+}
+
 .css-nav-button {
         padding-top: 30px; 
         border: none;
         height: 100%; 
         color: white; 
-        background-color: #e9573f;
+        background-color: #e5b062;
         font-weight: 700;
         margin-top: -25px;
         margin-left: 200px;
 
         &:hover {
-                background-color: #e9573f;
+                background-color: #e5b062;
         }
 }
 
 .home-nav-button {
         border: none;
         color: white; 
-        background-color: #e9573f;
+        background-color: #e5b062;
         height: 100%;
         font-size: 23px;
         padding-top: 22px;
@@ -33,6 +43,6 @@
         display: inline-block;
 
         &:hover {
-                background-color: #e9573f;
+                background-color: #e5b062;
         }
 }

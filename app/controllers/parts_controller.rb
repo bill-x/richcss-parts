@@ -19,14 +19,11 @@ class PartsController < ActionController::Base
         @part = Part.where(:name => params[:name]).first
         @versions = Version.where(:part_name => @part.name).order(version: :desc)
         @homepage = @part.homepage.clone
-        @downloads = @part.total_downloads
-        @downloadLink = getDownloadLink(@part, @part.version)
-        @gemfileEntry = "part '#{@part[:name]}', '~> #{params[:version] ? params[:version] : @part.version}'"
-
-        if !params[:version].nil? && params[:version] != @part.version
-            @downloads = @versions.where(:version => params[:version]).first.number_of_downloads
-            @downloadLink = getDownloadLink(@part, params[:version])
-        end
+        version = params[:version] ? params[:version] : @part.version
+        @downloads = @versions.where(:version => version).first.number_of_downloads
+        @downloadLink = getDownloadLink(@part, version)
+        @gemfileEntry = "part '#{@part[:name]}', '~> #{version}'"
+        @dependencies = Dependency.where(:part_version => version, :part_name=> @part.name)
     end
 
     def search
