@@ -7,7 +7,7 @@ class ApiController < ActionController::Base
             render :text => "Part: #{params[:part_name]} does not exist.", status: 400
             return
         end
-        
+
         render :json => part, status: 200
 	end
 
@@ -50,7 +50,7 @@ class ApiController < ActionController::Base
             allDep[curDep[0]] = [] if !allDep.has_key?(curDep[0])
             allDep[curDep[0]].push(partObj)
         end
-        
+
         render :json => allDep, status: 200
     end
 
@@ -61,7 +61,7 @@ class ApiController < ActionController::Base
                 :authors => params[:authors], :email => params[:email], :homepage => params[:homepage])
             Version.create(:part_name => params[:name], :version => params[:version])
 
-            if !params[:dependencies].empty?
+            if !params[:dependencies].nil? && !params[:dependencies].empty?
                 params[:dependencies].each do |dependency_name, dependency_version|
                     Dependency.create(:part_name => params[:name], :part_version => params[:version],
                         :dependency_name => dependency_name, :dependency_version => dependency_version)
