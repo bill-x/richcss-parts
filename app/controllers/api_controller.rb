@@ -74,7 +74,7 @@ class ApiController < ActionController::Base
                 Version.create(:part_name => params[:name], :version => params[:version])
                 part.update_attributes(:version => params[:version])
 
-                if !params[:dependencies].nil?
+                if !params[:dependencies].nil? && !params[:dependencies].empty?
                     params[:dependencies].each do |dependency_name, dependency_version|
                         Dependency.create(:part_name => params[:name], :part_version => params[:version],
                             :dependency_name => dependency_name, :dependency_version => dependency_version)
