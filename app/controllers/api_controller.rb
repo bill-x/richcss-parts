@@ -12,12 +12,6 @@ class ApiController < ActionController::Base
 	end
 
     def getPartDependencies
-        #part = Part.where(:name => params[:part_name]).first
-        #if part.nil?
-        #    render :text => "Part: #{params[:part_name]} does not exist.", status: 400
-        #    return
-        #end
-
         version = params[:version] || part.version
 
         queue = [[params[:part_name], version]]
