@@ -1,4 +1,5 @@
 {
+	"name": "bower-rails",
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
