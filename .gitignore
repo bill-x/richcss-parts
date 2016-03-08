@@ -26,5 +26,4 @@ npm-debug.log
 /public/assets
 
 # Ignore Bower assets
-/vendor/assets/bower_components
 /vendor/bundle/ruby
