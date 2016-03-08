@@ -28,6 +28,11 @@ class PartsController < ActionController::Base
 
     def search
         @title = 'Search Results'
-        @parts = Part.paginate(page: params[:page], per_page: 9).where("name LIKE \"%#{params[:search]}%\" or description LIKE \"%#{params[:search]}%\"").order(name: :asc)
+
+        if Rails.env.production?
+            @parts = Part.paginate(page: params[:page], per_page: 9).where("\"name\" LIKE \'%#{params[:search]}%\'' or \"description\" LIKE \'%#{params[:search]}%\'")
+        else
+            @parts = Part.paginate(page: params[:page], per_page: 9).where("name LIKE \"%#{params[:search]}%\" or description LIKE \"%#{params[:search]}%\"").order(name: :asc)
+        end
     end
 end
