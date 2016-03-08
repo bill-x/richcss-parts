@@ -10,4 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require angular/angular
+//= require angular-rails-templates
+//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
 //= require_tree .
