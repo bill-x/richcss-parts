@@ -11,5 +11,4 @@
 // about supported directives.
 //
 //= require angular-rails-templates
-//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
 //= require_tree .
