@@ -22,7 +22,6 @@ class PartsController < ActionController::Base
         version = params[:version] ? params[:version] : @part.version
         @downloads = @versions.where(:version => version).first.number_of_downloads
         @downloadLink = getDownloadLink(@part, version)
-        @gemfileEntry = "part '#{@part[:name]}', '~> #{version}'"
         @dependencies = Dependency.where(:part_version => version, :part_name=> @part.name)
     end
 
