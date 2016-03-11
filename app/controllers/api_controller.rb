@@ -1,7 +1,11 @@
 require 'pry'
 class ApiController < ActionController::Base
 	def getPart
-        part = Part.where(:name => params[:part_name], :version => params[:version]).first
+				if !params[:version].nil? && !params[:version].empty?
+        	part = Part.where(:name => params[:part_name], :version => params[:version]).first
+				else
+					part = Part.where(:name => params[:part_name]).first
+				end
 
         if part.nil?
             render :text => "Part: #{params[:part_name]} #{params[:version]} does not exist.", status: 400
@@ -16,18 +20,25 @@ class ApiController < ActionController::Base
         if part.nil?
             render :text => "Part: #{params[:name]} #{params[:version]} does not exist.", status: 400
             return
+				elsif part.is_a?(ActiveRecord::Relation)
+					part = part.first
         end
-        
+
         part.total_downloads += 1
         part.save
-        
+
         version = Version.where(:part_name => params[:name], :version => params[:version])
+
+				if version.is_a?(ActiveRecord::Relation)
+					version = version.first
+				end
+
         version.number_of_downloads += 1
         version.save
-        
+
         render :json => part, status: 200
     end
-        
+
     def getPartDependencies
         version = params[:version] || part.version
 
@@ -48,7 +59,7 @@ class ApiController < ActionController::Base
             dependencies = Dependency.where(:part_name => curDep[0], :part_version => curDep[1])
             depList = Hash.new
             dependencies.each do |addDep|
-                depName, depVersion = addDep.dependency_name, addDep.dependency_version.split[1]
+                depName, depVersion = addDep.dependency_name, addDep.dependency_version
                 if !visited.has_key?(depName) || !visited[depName].include?(depVersion)
                     queue.push([depName, depVersion])
                     visited[depName] = Array.new if !visited.has_key?(depName)
