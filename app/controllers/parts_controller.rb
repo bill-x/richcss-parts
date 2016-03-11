@@ -12,7 +12,7 @@ class PartsController < ActionController::Base
         homepage = homepage.split("\/")
         repo_owner = homepage[0]
         repo_name = homepage[1]
-        return "https://api.github.com/repos/#{repo_owner}/#{repo_name}/releases/tags/v#{version}"
+        return "https://api.github.com/repos/#{repo_owner}/#{repo_name}/zipball/v#{version}"
     end
 
     def show
