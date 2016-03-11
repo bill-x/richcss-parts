@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/api/part/:part_name/dependency', to: 'api#getPartDependencies'
 
   post '/api/upload', to: 'api#upload'
+  
+  post '/api/part/downloaded', to: 'api#incrementDownload'
 
   get '/api/validateDependencies/:dependencies', :dependencies => /.*/, to: 'api#validateDependencies'
 
