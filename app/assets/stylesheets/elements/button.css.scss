@@ -46,3 +46,31 @@
                 background-color: #e5b062;
         }
 }
+
+.install-cli-button {
+        width: 25%;
+        margin: 20px auto 0;
+}
+
+.install-cli-button-circle {
+        height: 40px;
+        border-radius: 25px;
+        background: white;
+}
+
+.install-cli-button-circle:hover {
+        background: #30588e;
+}
+
+.install-cli-button a {
+        display: block;
+        width: 100%;
+        line-height: 2.3em;
+        text-align: center;
+        color: #e5b062;
+        font-family: Verdana;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: none;
+        height: 40px;
+}
