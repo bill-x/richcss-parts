@@ -10,10 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require routes
+ *= require parts/pure_css/lib/box/blocks
+ *= require parts/pure_css/lib/box/main
+ *= require parts/pure_css/lib/box/positioning
+ *= require parts/pure_css/lib/elements/button
+ *= require parts/pure_css/lib/elements/colors
+ *= require parts/pure_css/lib/elements/features
+ *= require parts/pure_css/lib/elements/fonts
+ *= require parts/pure_css/lib/elements/images
+ *= require parts/pure_css/lib/elements/inputs
+ *= require parts/pure_css/lib/elements/lists
  *= require_self
  */
-
-$icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
-@import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
-@import "bootstrap-sass/assets/stylesheets/bootstrap";
