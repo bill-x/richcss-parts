@@ -37,8 +37,6 @@ class ApiController < ActionController::Base
         version.number_of_downloads += 1
         version.save
 
-        binding.pry
-
         render :json => part, status: 200
     end
 
