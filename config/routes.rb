@@ -25,6 +25,12 @@ Rails.application.routes.draw do
 
   get '/demo/purecss', to: 'demo#purecss'
 
+  get '/demo/redtie', to: 'demo#redtie'
+
+  get '/demo/zenlike', to: 'demo/zenlike'
+
+  get '/demo/flat_tab_menu', to: 'demo/flat_tab_menu'
+
   # resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
