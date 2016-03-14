@@ -4,8 +4,13 @@
     <div class="itemlist">
         <div class="parts-header-label"> Parts </div>
         <div class="parts-container-block">
-          <div class="row">
+
+          <% @num = 0 %>
           <% @parts.each do |part| %>
+            <% if @num == 0 %>
+              <div class="row">
+            <% end %>
+
             <%= link_to "/parts/#{part.name}" do %>
               <div class="col-md-4 parts-block">
                 <div class="part-id">
@@ -22,8 +27,13 @@
                 </div>
               </div>
             <% end %>
+
+            <% @num = @num + 1 %>
+            <% @num = @num % 3 %>
+            <% if @num == 0 %>
+              </div>
+            <% end %>
           <% end %>
-          </div>
           <div class="pagination"><%= will_paginate @parts %></div>
         </div>
     </div>
