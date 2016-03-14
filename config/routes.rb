@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   get '/api/validateDependencies/:dependencies', :dependencies => /.*/, to: 'api#validateDependencies'
 
+  get '/demo/applemenu', to: 'demo#applemenu'
+
+  get '/demo/purecss', to: 'demo#purecss'
+
   # resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

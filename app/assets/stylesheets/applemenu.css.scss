@@ -10,10 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require routes
+ *= require parts/Apple_Menu/lib/box/blocks
+ *= require parts/Apple_Menu/lib/box/main
+ *= require parts/Apple_Menu/lib/box/positioning
+ *= require parts/Apple_Menu/lib/elements/button
+ *= require parts/Apple_Menu/lib/elements/colors
+ *= require parts/Apple_Menu/lib/elements/features
+ *= require parts/Apple_Menu/lib/elements/fonts
+ *= require parts/Apple_Menu/lib/elements/images
+ *= require parts/Apple_Menu/lib/elements/inputs
+ *= require parts/Apple_Menu/lib/elements/lists
  *= require_self
  */
-
-$icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
-@import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
-@import "bootstrap-sass/assets/stylesheets/bootstrap";

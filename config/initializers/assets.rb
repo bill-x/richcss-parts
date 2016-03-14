@@ -8,3 +8,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 types = %w( *.png *.gif *.jpg *.eot *.woff *.woff2 *.ttf )
 Rails.application.config.assets.precompile += types
+Rails.application.config.assets.precompile += %w( purecss.css )
+Rails.application.config.assets.precompile += %w( applemenu.css )
