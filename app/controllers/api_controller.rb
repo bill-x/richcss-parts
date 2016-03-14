@@ -1,11 +1,12 @@
 require 'pry'
 class ApiController < ActionController::Base
 	def getPart
-				if !params[:version].nil? && !params[:version].empty?
-        	part = Part.where(:name => params[:part_name], :version => params[:version]).first
-				else
-					part = Part.where(:name => params[:part_name]).first
-				end
+		if !params[:version].nil? && !params[:version].empty?
+        	version = Version.where(:part_name => params[:part_name], :version => params[:version]).first
+            part = version.nil? ? nil : Part.where(:name => params[:part_name]).first
+		else
+			part = Part.where(:name => params[:part_name]).first
+		end
 
         if part.nil?
             render :text => "Part: #{params[:part_name]} #{params[:version]} does not exist.", status: 400
@@ -35,6 +36,8 @@ class ApiController < ActionController::Base
 
         version.number_of_downloads += 1
         version.save
+
+        binding.pry
 
         render :json => part, status: 200
     end
