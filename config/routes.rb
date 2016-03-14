@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/parts/:name(/version/:version)', to: 'parts#show', :version => /.*/
 
-  get '/api/part/:part_name', to: 'api#getPart'
+  get '/api/part/:part_name(/version/:version)', to: 'api#getPart', :version => /.*/
 
   get '/api/part/:part_name/dependency', to: 'api#getPartDependencies'
 
@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   post '/api/part/downloaded', to: 'api#incrementDownload'
 
   get '/api/validateDependencies/:dependencies', :dependencies => /.*/, to: 'api#validateDependencies'
+
+  get '/demo/skeleton', to: 'demo#skeleton'
+
+  get '/demo/social_footer', to: 'demo#social_footer'
 
   # resources :users
 
