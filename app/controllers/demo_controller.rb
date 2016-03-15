@@ -11,12 +11,12 @@ class DemoController < ActionController::Base
     def purecss
     end
 
-    def zenlike
+    def flat_tab_menu
     end
 
     def redtie
     end
 
-    def flat_tab_menu
+    def zenlike
     end
 end
