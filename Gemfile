@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'richcss', '0.1.3'
+gem 'richcss', '0.1.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use mysql as the database for Active Record
@@ -42,7 +42,6 @@ gem 'rails_12factor', group: :production
 
 # gem 'pg'
 
-gem 'richcss'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
